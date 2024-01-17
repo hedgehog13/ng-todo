@@ -18,9 +18,9 @@ export class LoginComponent {
   login() {
     // Call the authentication service to perform login
     this.authService.login(this.username, this.password).pipe(
-      tap(()=> this.router.navigate(['/todo-list'])),
+      tap(()=> this.router.navigate(['/my-lists'])),
       catchError((error)=>{
-        this.router.navigate(['/todo-list']);
+        this.router.navigate(['login']);
         throw error;
       })
     

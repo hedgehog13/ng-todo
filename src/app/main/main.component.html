@@ -1,0 +1,38 @@
+<!-- main-container.component.html -->
+
+<div class="container-fluid">
+    <!-- Top Bar -->
+    <div class="row top-bar">
+      <div class="col-md-6">
+        <!-- Left side content (e.g., application title) -->
+        <h1>My Todo App </h1>
+      </div>
+      <div class="col-md-6 text-end">
+        <!-- Right side content (login/logout component) -->
+        <app-login-logout></app-login-logout>
+      
+      </div>
+    </div>
+  
+    <!-- Main Content -->
+    <div class="row">
+      <!-- Left Bar -->
+      <div class="col-md-2 left-bar">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <a routerLink="/my-lists" routerLinkActive="active">My Lists</a>
+          </li>
+          <li class="list-group-item">
+            <a routerLink="/shared-lists" routerLinkActive="active">My Shared Lists</a>
+          </li>
+        </ul>
+      </div>
+  
+      <!-- Main Todo List Component -->
+      <div class="col-md-10 main-content">
+        <app-add-todo (addTodo)="onAddTodo($event)"></app-add-todo>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  

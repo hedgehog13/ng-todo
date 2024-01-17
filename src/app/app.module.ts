@@ -8,13 +8,19 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './user-auth/register/register.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import {  HttpClientModule } from '@angular/common/http';
+import { MainComponent } from './main/main.component';
+import { LoginLogoutComponent } from './login-logout/login-logout.component';
+import { AddTodoComponent } from './add-todo/add-todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    TodoListComponent
+    TodoListComponent,
+    MainComponent,
+    LoginLogoutComponent,
+    AddTodoComponent
   ],
   imports: [
     BrowserModule,

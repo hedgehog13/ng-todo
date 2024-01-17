@@ -1,0 +1,10 @@
+
+
+<div *ngIf="isLoggedIn" class="user-info">
+    <span>Welcome, {{ username }}</span>
+    <button (click)="logout()" class="btn btn-link">Logout</button>
+  </div>
+  <div *ngIf="!isLoggedIn">
+    <!-- Add your login button or any other login-related content here -->
+    <button routerLink="/login" class="btn btn-primary">Login</button>
+  </div>
