@@ -1,10 +1,37 @@
 <!-- add-todo.component.html -->
-
-<!-- add-todo.component.html -->
-
 <div class="add-todo-container"> 
-    <div class="d-flex justify-content-end" *ngIf="!showForm">
-        <button (click)="toggleForm()" class="btn btn-primary">+</button>
+<div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex justify-content-between align-items-center ml-2" *ngIf="!showForm">
+        <button (click)="toggleForm()" class="btn btn-primary ">+</button>
+      </div>
+      <div *ngIf="showForm" class="row row mt-3">
+        <div class="col-md-3">
+          <input type="text" [(ngModel)]="newTodo.name" placeholder="Todo Name" class="form-control mb-2">
+        </div>
+        <div class="col-md-3">
+          <input type="text" [(ngModel)]="newTodo.description" placeholder="Description" class="form-control mb-2">
+        </div>
+        <div class="col-md-2">
+          <input type="date" [(ngModel)]="newTodo.dueDate" class="form-control mb-2">
+        </div>
+        <div class="col-md-2">
+          <select [(ngModel)]="newTodo.status" class="form-control mb-2">
+            <option value="NotStarted">Not Started</option>
+            <option value="InProgress">In Progress</option>
+            <option value="Done">Done</option>
+          </select>
+    
+        </div>
+        <div class="col-md-2 todo-actions">
+          <button (click)="addNewTodo()" class="btn btn-success mb-2">Save </button>
+  
+          <button (click)="cancelForm()" class="btn btn-secondary mb-2 ml-2">Cancel</button>
+      </div>
+</div>
+</div>
+<!-- <div class="add-todo-container"> 
+    <div class="d-flex justify-content-between align-items-center ml-2" *ngIf="!showForm">
+        <button (click)="toggleForm()" class="btn btn-primary ">+</button>
       </div>
     <div *ngIf="showForm" class="row row mt-3">
       <div class="col-md-3">
@@ -14,17 +41,18 @@
         <input type="text" [(ngModel)]="newTodo.description" placeholder="Description" class="form-control mb-2">
       </div>
       <div class="col-md-2">
-        <input type="date" [(ngModel)]="newTodo.taskDate" class="form-control mb-2">
+        <input type="date" [(ngModel)]="newTodo.dueDate" class="form-control mb-2">
       </div>
       <div class="col-md-2">
         <select [(ngModel)]="newTodo.status" class="form-control mb-2">
-          <option value="Not Started">Not Started</option>
-          <option value="In Progress">In Progress</option>
+          <option value="NotStarted">Not Started</option>
+          <option value="InProgress">In Progress</option>
           <option value="Done">Done</option>
         </select>
+  
       </div>
       <div class="col-md-2">
-        <button (click)="onAddTodo()" class="btn btn-success mb-2">Save Todo</button>
+        <button (click)="addNewTodo()" class="btn btn-success mb-2">Save Todo</button>
 
         <button (click)="cancelForm()" class="btn btn-secondary mb-2 ml-2">Cancel</button>
     </div>
@@ -32,4 +60,4 @@
   
   
   </div>
-  
+   -->

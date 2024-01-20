@@ -1,1 +1,34 @@
-todo list
+
+    <!-- Floating menu -->
+    <ul class="list-group">
+      <li *ngFor="let todo of todos$ | async as todos; let i = index" class="list-group-item">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="todo-info">
+            {{ todo.name }} - {{ todo.description }} - {{ todo.dueDate | date }} - {{ todo.status }}
+          </div>
+          <div class="todo-actions">
+            <button class="btn btn-primary btn-sm" (click)="editTodo(todo)">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteTodo(todo.id)">Delete</button>
+    
+            <!-- Align this button to the right -->
+            <button class="btn btn-info btn-sm ml-auto" (click)="toggleFloatingMenu(i)">Update Status</button>
+          </div>
+        </div>
+        <ng-template #editMode>
+          <input [(ngModel)]="todo.name" />
+          <input [(ngModel)]="todo.description" />
+          <input type="date" [(ngModel)]="todo.dueDate" />
+          <input [(ngModel)]="todo.status" />
+          <button (click)="saveEdit(todo)">Save</button>
+          <button (click)="cancelEdit(todo)">Cancel</button>
+        </ng-template>
+        <!-- Floating menu -->
+        <div *ngIf="selectedTodoIndex === i && showFloatingMenu" class="floating-menu">
+          <button class="btn btn-success btn-sm" (click)="updateStatus(todo, 'NotStarted')">Not Started</button>
+          <button class="btn btn-warning btn-sm" (click)="updateStatus(todo, 'InProgress')">In Progress</button>
+          <button class="btn btn-secondary btn-sm" (click)="updateStatus(todo, 'Done')">Done</button>
+          <button class="btn btn-secondary btn-sm" (click)="cancelFloatingMenu()">Cancel</button>
+        
+        </div>
+      </li>
+    </ul>

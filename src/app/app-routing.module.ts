@@ -16,6 +16,7 @@ const routes: Routes = [
     children: [
       { path: 'my-lists', component: TodoListComponent },
       // { path: 'shared-lists', component: TodoListComponent },
+      { path: '', redirectTo: '/my-lists', pathMatch: 'full' }, 
     ]
   },
   { path: 'login', component: LoginComponent },

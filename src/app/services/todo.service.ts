@@ -1,19 +1,31 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
+import { Todo } from '../models/todo.model';
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
-  private apiUrl = 'https://localhost:7081/'; //'YOUR_BACKEND_API_URL';
+  private apiUrl = 'https://localhost:7081/api/'; 
+  private todoListUpdated$: EventEmitter<void> = new EventEmitter<void>();
+
   constructor(private http: HttpClient) {}
 
-  getTodos(): Observable<any> {
-    return this.http.get(`${this.apiUrl}TodoItems`);
+  getTodos(): Observable<Todo[]> {
+    return this.http.get<Todo[]>(`${this.apiUrl}TodoItems`);
   }
-
-  addTodo(todo: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}TodoItems`, todo);
+  notifyTodoListUpdated() {
+    
+    this.todoListUpdated$.emit();
+  }
+  onTodoListUpdated(): Observable<void> {
+    return this.todoListUpdated$.asObservable();
+  }
+  addTodo(todo: Todo): Observable<any> {
+    console.log('add todo')
+    return this.http.post<Todo>(`${this.apiUrl}TodoItems/`, todo).pipe(
+      tap(() => { console.log('Todo added successfully:', todo);this.notifyTodoListUpdated()})
+    );
   }
 
   updateTodo(todo: any): Observable<any> {

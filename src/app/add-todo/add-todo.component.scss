@@ -5,5 +5,9 @@
   
   .add-todo-container input {
     flex: 1;
-    margin-right: 10px;
+  
+  }
+  .todo-actions {
+    display: flex;
+    gap: 4px;
   }
