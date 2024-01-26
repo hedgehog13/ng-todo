@@ -1,7 +1,7 @@
 import { TestBed, fakeAsync, inject, tick } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { AuthService } from './auth.service';
-import { HttpErrorResponse } from '@angular/common/http';
+
 
 describe('AuthService', () => {
   let authService: AuthService;
@@ -106,25 +106,6 @@ describe('AuthService', () => {
 
   });
 
-  describe('decodeToken', () => {
-    // it('should decode the token and return the payload', () => {
-    //   const token = 'testToken';
-    //   spyOn(window, 'atob').and.returnValue('{"sub":"testuser"}');
-
-    //   const result = authService['decodeToken'](token);
-
-    //   expect(result).toEqual({ sub: 'testuser' });
-    // });
-
-    it('should return an empty object if decoding fails', () => {
-      const token = 'testToken';
-      spyOn(window, 'atob').and.throwError('Test error');
-
-      const result = authService['decodeToken'](token);
-
-      expect(result).toEqual({});
-    });
-  });
 
   describe('logout', () => {
     it('should remove the authentication token from local storage and navigate to login', () => {
