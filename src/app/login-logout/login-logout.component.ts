@@ -13,7 +13,7 @@ export class LoginLogoutComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    // Check authentication status on component initialization
+   
     this.isLoggedIn = this.authService.isAuthenticated();
 
     // If the user is logged in, get and display the username
