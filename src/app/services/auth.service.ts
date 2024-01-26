@@ -46,7 +46,7 @@ export class AuthService {
   }
 
 
-  private handleError(error: HttpErrorResponse): Observable<never> {
+   handleError(error: HttpErrorResponse): Observable<never> {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
     } else {
@@ -77,7 +77,7 @@ export class AuthService {
 
     return false;
   }
-  private decodeToken(token: string): any {
+   decodeToken(token: string): any {
     try {
       // JWTs are base64-encoded, so we need to decode them
       const base64Url = token.split('.')[1];

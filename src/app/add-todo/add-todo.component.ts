@@ -8,7 +8,8 @@ import { TodoService } from '../services/todo.service';
 @Component({
   selector: 'app-add-todo',
   templateUrl: './add-todo.component.html',
-  styleUrls: ['./add-todo.component.scss']
+  styleUrls: ['./add-todo.component.scss'],
+  
 })
 export class AddTodoComponent {
   @Output() addTodo: EventEmitter<Todo> = new EventEmitter<Todo>();
