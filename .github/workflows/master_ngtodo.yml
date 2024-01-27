@@ -46,8 +46,8 @@ jobs:
         with:
           name: node-app
       - name: Print artifact contents
-          run: |
-            ls -R ${{ github.workspace }}/node-app
+        run: |
+          ls -R ${{ github.workspace }}/node-app
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
